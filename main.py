@@ -12,7 +12,7 @@ import inventory
 def play():
     """Print an action menu and allow for continous game play"""
     # print title of game
-    # intro_text()
+    intro_text()
     # valid directions and actions for the characters
     action = ["quit", "characters", "map"]
     directions = ["north", "south", "east", "west"]
