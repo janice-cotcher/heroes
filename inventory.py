@@ -19,7 +19,7 @@ inventory = {"Wonder Woman": {"Lasso of Truth":
                         {"description":
                          "high frequency emitter allowing the control of bats",
                          "damage": 15, "protection": 100}},
-             "The item": {"Red suit":
+             "The Flash": {"Red suit":
                           {"description":
                            "protection when travelling at super speed",
                            "damage": 0, "protection": 100}}
