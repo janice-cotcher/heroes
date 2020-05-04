@@ -10,12 +10,22 @@
 ☐ determine big Boss
 
 # Classes
-☐ weapons
+✔ weapons @done(2019-12-01 14:58)
 ✔ vehicles @done(2019-11-21 13:31)
-☐ protection
+✔ protection @done(2019-12-01 14:58)
 ☐ healing
 ☐ other supplies
 ☐ enemies
-☐ heroes
+✔ heroes @done(2019-12-01 14:58)
 ☐ cities
 ☐ map tiles
+
+# Efficiency
+☐ function to check for substrings in character names
+
+# Continous Game Example
+✔ choice of weapons @done(2020-05-04 10:39)
+☐ damage inflicted
+✔ choice of defence @done(2020-05-04 10:39)
+✔ choice of direction in explore menu @done(2020-05-04 10:39)
+✔ healing items @done(2020-05-04 09:13)

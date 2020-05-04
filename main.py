@@ -5,7 +5,6 @@ import hero
 import map
 from tabulate import tabulate
 from time import sleep
-import vehicles
 import inventory
 
 
@@ -69,14 +68,24 @@ def choose_character():
         input = get_player_command("What character would you like to play?")
         player = input.title()
         # prevent input error if the user does not input The Flash
-        if player == "Flash":
-            player = "The Flash"
+        if player == "The Flash":
+            player = "Flash"
+        if player == "Wonder Woman":
+            player = "WonderWoman"
+        # put all the hero subclasses into a list
+        hero_subclass = [cls.__name__ for cls in hero.Hero.__subclasses__()]
+        # print(hero_subclass)
+        # compare the inputted player to see if it is valid
         # print the choosen character with characteristics and inventory
-        if player in hero.heroes:
+        if player in hero_subclass:
+            if player == "Flash":
+                player = "The Flash"
+            if player == "WonderWoman":
+                player = "Wonder Woman"
             print(f"Welcome, {player}!")
             hero.hero_check(player)
-            vehicles.vehicle_owner(player)
-            inventory.player_inventory(player, inventory.inventory)
+            # inventory.vehicle_owner(player)
+            # inventory.player_inventory(player)
             print("\n")
             break
         else:
