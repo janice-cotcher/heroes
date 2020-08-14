@@ -19,15 +19,17 @@ inventory = {"Wonder Woman": {"Lasso of Truth":
                         {"description":
                          "high frequency emitter allowing the control of bats",
                          "damage": 15, "protection": 100}},
-             "The item": {"Red suit":
-                          {"description":
-                           "protection when travelling at super speed",
-                           "damage": 0, "protection": 100}}
+             "The Flash": {"Red suit":
+                           {"description":
+                            "protection when travelling at super speed",
+                            "damage": 0, "protection": 100}}
              }
 
 
 def player_inventory(player, inventory):
     """Print out the inventory for the choosen character"""
+    protection_items = []
+    weapons = []
     for item in inventory[player]:
         description = inventory[player][item]["description"]
         damage = inventory[player][item]["damage"]
@@ -35,6 +37,11 @@ def player_inventory(player, inventory):
         print(f"{player}'s {item} - {description}")
         print(f"damage: {damage}")
         print(f"protection: {protection}")
+        if protection != 0 and damage == 0:
+            protection_items.append(item)
+        elif damage != 0:
+            weapons.append(item)
+    return protection_items, weapons
 
 
-# player_inventory("Batman", inventory)
+# player_inventory("The Flash", inventory)
