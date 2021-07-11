@@ -172,7 +172,7 @@ while True:
     # convert the user input to all lower case to prevent errors
     # print out the action chosen
     if action_input.lower() == "quit":
-        print("Good bye! Thanks for playing!")
+        print("Goodbye! Thanks for playing!")
         sys.exit()
     elif action_input.lower() == "attack":
         weapons(character, inventory)
