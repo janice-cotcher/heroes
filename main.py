@@ -5,13 +5,13 @@ import hero
 import map
 from tabulate import tabulate
 from time import sleep
-import inventory
+# import inventory
 
 
 def play():
     """Print an action menu and allow for continous game play"""
     # print title of game
-    intro_text()
+    # intro_text()
     # valid directions and actions for the characters
     action = ["quit", "characters", "map"]
     directions = ["north", "south", "east", "west"]
@@ -22,25 +22,28 @@ def play():
     while True:
         # after user input, print out the action choosen by the user
         action_input = get_player_command("Action: ")
+        print("\n")
         if action_input in action:
             print(f"{action_input.title()}!")
+            print("\n")
             if action_input == "quit":
                 sys.exit()
             # after the map is choosen, player chooses character
             elif action_input == "map":
-                choose_map()
-                choose_character()
+                map.choose_map()
+                hero.choose_character()
                 add_action(action)
             # after the character is choosen, player chooses the map to play
             elif action_input == "characters":
-                choose_character()
-                choose_map()
+                hero.choose_character()
+                map.choose_map()
                 add_action(action)
             elif action_input == "move":
                 # directions menu and options appear when move is choosen
                 for d in directions:
                     print(d)
-                user_direction = get_player_command("What direction?")
+                user_direction = get_player_command("What direction? ")
+                print("\n")
                 if user_direction in directions:
                     print(f"Moving {user_direction}")
                     print("\n")
@@ -58,61 +61,66 @@ def get_player_command(message):
     return action_input.lower()
 
 
-def choose_character():
-    """User chooses which hero they wish to play as"""
-    print("Possible Characters:")
-    character = hero.heroes
-    for heroes in character:
-        print(heroes)
-    while True:
-        input = get_player_command("What character would you like to play?")
-        player = input.title()
-        # prevent input error if the user does not input The Flash
-        if player == "The Flash":
-            player = "Flash"
-        if player == "Wonder Woman":
-            player = "WonderWoman"
-        # put all the hero subclasses into a list
-        hero_subclass = [cls.__name__ for cls in hero.Hero.__subclasses__()]
-        # print(hero_subclass)
-        # compare the inputted player to see if it is valid
-        # print the choosen character with characteristics and inventory
-        if player in hero_subclass:
-            if player == "Flash":
-                player = "The Flash"
-            if player == "WonderWoman":
-                player = "Wonder Woman"
-            print(f"Welcome, {player}!")
-            hero.hero_check(player)
-            # inventory.vehicle_owner(player)
-            # inventory.player_inventory(player)
-            print("\n")
-            break
-        else:
-            print("Invalid Character")
-            print("\n")
+# def choose_character():
+#     """User chooses which hero they wish to play as"""
+#     print("Possible Characters:")
+#     character = hero.heroes
+#     for heroes in character:
+#         print(heroes)
+#     print("\n")
+#     while True:
+#         input = get_player_command("What character would you like to play? ")
+#         print("\n")
+#         player = input.title()
+#         # prevent input error if the user does not input The Flash
+#         if player == "The Flash":
+#             player = "Flash"
+#         if player == "Wonder Woman":
+#             player = "WonderWoman"
+#         # put all the hero subclasses into a list
+#         hero_subclass = [cls.__name__ for cls in hero.Hero.__subclasses__()]
+#         # print(hero_subclass)
+#         # compare the inputted player to see if it is valid
+#         # print the choosen character with characteristics and inventory
+#         if player in hero_subclass:
+#             if player == "Flash":
+#                 player = "The Flash"
+#             if player == "WonderWoman":
+#                 player = "Wonder Woman"
+#             print("\n")
+#             print(f"Welcome, {player}!")
+#             hero.hero_check(player)
+#             # inventory.vehicle_owner(player)
+#             # inventory.player_inventory(player)
+#             print("\n")
+#             return player
+#             # break
+#         else:
+#             print("Invalid Character")
+#             print("\n")
 
 
-def choose_map():
-    """The player chooses which city they would like to play"""
-    city = map.city_level
-    print("Cities")
-    for place in city:
-        print(place)
-    print("\n")
-    while True:
-        # player chooses which city level they want play and then a random
-        # 5x5 map is generated and printed
-        input = get_player_command("What city do you want to start in? ")
-        city_choice = input.title()
-        if city_choice in city:
-            print(f"Welcome to {city_choice}!")
-            city_map = map.main_map[city_choice]
-            print(tabulate(city_map, tablefmt="grid"))
-            break
-        else:
-            print("Invalid location")
-            print("\n")
+# def choose_map():
+#     """The player chooses which city they would like to play"""
+#     city = map.city_level
+#     print("Cities")
+#     for place in city:
+#         print(place)
+#     print("\n")
+#     while True:
+#         # player chooses which city level they want play and then a random
+#         # 5x5 map is generated and printed
+#         input = get_player_command("What city do you want to start in? ")
+#         city_choice = input.title()
+#         if city_choice in city:
+#             print(f"Welcome to {city_choice}!")
+#             city_map = map.main_map[city_choice]
+#             print(tabulate(city_map, tablefmt="grid"))
+#             return city_map
+#             # break
+#         else:
+#             print("Invalid location")
+#             print("\n")
 
 
 def add_action(list):

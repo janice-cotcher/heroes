@@ -34,9 +34,9 @@ def player_inventory(player, inventory):
         description = inventory[player][item]["description"]
         damage = inventory[player][item]["damage"]
         protection = inventory[player][item]["protection"]
-        print(f"{player}'s {item} - {description}")
-        print(f"damage: {damage}")
-        print(f"protection: {protection}")
+        # print(f"{player}'s {item} - {description}")
+        # print(f"damage: {damage}")
+        # print(f"protection: {protection}")
         if protection != 0 and damage == 0:
             protection_items.append(item)
         elif damage != 0:
