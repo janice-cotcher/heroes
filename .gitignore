@@ -7,3 +7,4 @@ __pycache__/inventory.cpython-37.pyc
 __pycache__/hero_characteristics.cpython-37.pyc
 __pycache__/map.cpython-37.pyc
 __pycache__/vehicles.cpython-37.pyc
+*.pyc
