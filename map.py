@@ -21,6 +21,35 @@ class Blank(MapTile):
         return """There are no items to collect or enemies to fight.
                   Enjoy your rest."""
 
+class Supplies(MapTile):
+    """Position that contains survival supplies"""
+    def __init__(self, x, y):
+        """Intitial supplies at tile"""
+        self.i = 0
+        self.name = "Supplies"
+        self.inventory = []
+
+        super().__init__(x, y)
+
+class Weapons(MapTile):
+    """Position that contains weapons"""
+    def __init__(self, x, y):
+        """Intitial weapons at tile"""
+        self.i = 0
+        self.name = "Weapons"
+        self.inventory = []
+
+        super().__init__(x, y)
+
+class BigBoss(MapTile):
+    """Position of the main villian"""
+    def intro_text(self):
+        return """ Big Boss"""
+
+class Enemy(MapTile):
+    """Position of underling of the main villian"""
+    def intro_text(self):
+        return """ Enemy """
 
 def append_list(dictionary, list):
     """Create a list from elements of a dictionary"""
@@ -143,3 +172,88 @@ def get_player_command(message):
     """Get user input and convert the string to lowercase"""
     action_input = input(message)
     return action_input.lower()
+
+
+# initialize the city map
+city_map = []
+
+
+def tile_at(x, y):
+    """Locates the tile at a coordinate"""
+    if x < 0 or y < 0:
+        return None
+    try:
+        return city_map[y][x]
+    except IndexError:
+        return None
+
+
+# city's map
+with open("map.txt", "r") as file:
+    city_dsl = file.read()
+
+
+def is_dsl_valid(dsl):
+    """
+    Check to make sure there is only one start tile and escape pod.
+    Also check that each row has the same number of columns
+    """
+    if dsl.count("| Start   |") != 1:
+        return False
+    if dsl.count("| BigBoss |") == 0:
+        return False
+    lines = dsl.splitlines()
+    lines = [l for l in lines if l]
+    pipe_counts = [line.count("|") for line in lines]
+    for count in pipe_counts:
+        if count != pipe_counts[0]:
+            return False
+    return True
+
+
+# key to the city's map
+tile_type_dict = {"Supplies": Supplies,
+                  "Start": Start,
+                  "Weapons": Weapons,
+                  "Enemy": Enemy,
+                  "BigBoss": BigBoss,
+                  "Blank": Blank}
+# initialize the start tile
+start_tile_location = None
+
+
+def parse_city_dsl():
+    """Taking the ship map as a string and returning a list"""
+    if not is_dsl_valid(city_dsl):
+        raise SyntaxError("DSL is invalid!")
+
+    dsl_lines = city_dsl.splitlines()
+    dsl_lines = [x for x in dsl_lines if x]
+    # Iterate over each line in the DSL.
+    for y, dsl_row in enumerate(dsl_lines):
+        # Create an object to store the tiles
+        row = []
+        # Split the line into abbreviations
+        dsl_cells = dsl_row.split("|")
+        # The split method includes the beginning
+        # and end of the line so we need to remove
+        # those nonexistent cells
+        dsl_cells = [c for c in dsl_cells if c]
+        # Iterate over each cell in the DSL line
+        for x, dsl_cells in enumerate(dsl_cells):
+            # Look up the abbreviation in the dictionary
+            tile_type = tile_type_dict[dsl_cells]
+            # set the start tile location
+            if tile_type == Start:
+                global start_tile_location
+                start_tile_location = x, y
+            # If the dictionary returned a valid type, create
+            # a new tile object, pass it the X-Y coordinates
+            # as required by the tile __init__(), and add
+            # it to the row object. If None was found in the
+            # dictionary, we just add None.
+            row.append(tile_type(x, y) if tile_type else None)
+        # Add the whole row to the ship_map
+        city_map.append(row)
+
+parse_city_dsl()

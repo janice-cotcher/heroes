@@ -61,68 +61,6 @@ def get_player_command(message):
     return action_input.lower()
 
 
-# def choose_character():
-#     """User chooses which hero they wish to play as"""
-#     print("Possible Characters:")
-#     character = hero.heroes
-#     for heroes in character:
-#         print(heroes)
-#     print("\n")
-#     while True:
-#         input = get_player_command("What character would you like to play? ")
-#         print("\n")
-#         player = input.title()
-#         # prevent input error if the user does not input The Flash
-#         if player == "The Flash":
-#             player = "Flash"
-#         if player == "Wonder Woman":
-#             player = "WonderWoman"
-#         # put all the hero subclasses into a list
-#         hero_subclass = [cls.__name__ for cls in hero.Hero.__subclasses__()]
-#         # print(hero_subclass)
-#         # compare the inputted player to see if it is valid
-#         # print the choosen character with characteristics and inventory
-#         if player in hero_subclass:
-#             if player == "Flash":
-#                 player = "The Flash"
-#             if player == "WonderWoman":
-#                 player = "Wonder Woman"
-#             print("\n")
-#             print(f"Welcome, {player}!")
-#             hero.hero_check(player)
-#             # inventory.vehicle_owner(player)
-#             # inventory.player_inventory(player)
-#             print("\n")
-#             return player
-#             # break
-#         else:
-#             print("Invalid Character")
-#             print("\n")
-
-
-# def choose_map():
-#     """The player chooses which city they would like to play"""
-#     city = map.city_level
-#     print("Cities")
-#     for place in city:
-#         print(place)
-#     print("\n")
-#     while True:
-#         # player chooses which city level they want play and then a random
-#         # 5x5 map is generated and printed
-#         input = get_player_command("What city do you want to start in? ")
-#         city_choice = input.title()
-#         if city_choice in city:
-#             print(f"Welcome to {city_choice}!")
-#             city_map = map.main_map[city_choice]
-#             print(tabulate(city_map, tablefmt="grid"))
-#             return city_map
-#             # break
-#         else:
-#             print("Invalid location")
-#             print("\n")
-
-
 def add_action(list):
     """Unlock actions after characters and map is chosen"""
     unlock_action = ["move", "attack", "defend", "heal"]
