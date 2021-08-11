@@ -158,9 +158,9 @@ def choose_map():
         if city_choice in city:
             print(f"Welcome to {city_choice}!")
             city_map = main_map[city_choice]
-            print(tabulate(city_map, tablefmt="grid"))
+            print(tabulate(city_map, tablefmt="github"))
             with open("map.txt", "w") as f:
-                f.write(tabulate(city_map, tablefmt="grid"))
+                f.write(tabulate(city_map, tablefmt="github"))
             return city_map
             # break
         else:
@@ -177,6 +177,10 @@ def get_player_command(message):
 # initialize the city map
 city_map = []
 
+map_dsl = open('map.txt').read().strip()
+map_dsl = map_dsl.replace("+", "")
+map_dsl = map_dsl.replace(" ", "")
+map_dsl = map_dsl.replace("-", "")
 
 def tile_at(x, y):
     """Locates the tile at a coordinate"""
@@ -198,9 +202,9 @@ def is_dsl_valid(dsl):
     Check to make sure there is only one start tile and escape pod.
     Also check that each row has the same number of columns
     """
-    if dsl.count("| Start   |") != 1:
+    if dsl.count("|Start|") != 1:
         return False
-    if dsl.count("| BigBoss |") == 0:
+    if dsl.count("|BigBoss|") == 0:
         return False
     lines = dsl.splitlines()
     lines = [l for l in lines if l]
@@ -223,11 +227,11 @@ start_tile_location = None
 
 
 def parse_city_dsl():
-    """Taking the ship map as a string and returning a list"""
-    if not is_dsl_valid(city_dsl):
-        raise SyntaxError("DSL is invalid!")
+    """Taking the city map as a string and returning a list"""
+    # if not is_dsl_valid(city_dsl):
+    #     raise SyntaxError("DSL is invalid!")
 
-    dsl_lines = city_dsl.splitlines()
+    dsl_lines = map_dsl.splitlines()
     dsl_lines = [x for x in dsl_lines if x]
     # Iterate over each line in the DSL.
     for y, dsl_row in enumerate(dsl_lines):
@@ -253,7 +257,8 @@ def parse_city_dsl():
             # it to the row object. If None was found in the
             # dictionary, we just add None.
             row.append(tile_type(x, y) if tile_type else None)
-        # Add the whole row to the ship_map
+        # Add the whole row to the city_map
         city_map.append(row)
 
+# print(city_dsl)
 parse_city_dsl()

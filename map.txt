@@ -1,11 +1,6 @@
-+----------+---------+----------+---------+----------+
-| Supplies | Enemy   | Weapons  | Enemy   | Supplies |
-+----------+---------+----------+---------+----------+
-| Blank    | Start   | Supplies | Blank   | Weapons  |
-+----------+---------+----------+---------+----------+
-| Supplies | Enemy   | Supplies | Weapons | Enemy    |
-+----------+---------+----------+---------+----------+
-| Enemy    | Weapons | Supplies | Weapons | Weapons  |
-+----------+---------+----------+---------+----------+
-| Enemy    | BigBoss | Supplies | Blank   | Blank    |
-+----------+---------+----------+---------+----------+
+|----------|----------|----------|----------|----------|
+| Supplies | Supplies | Blank    | Start    | Enemy    |
+| Blank    | Enemy    | Blank    | Blank    | Supplies |
+| Supplies | Enemy    | Supplies | Blank    | Supplies |
+| Enemy    | Enemy    | Supplies | Weapons  | BigBoss  |
+| Weapons  | Supplies | Weapons  | Supplies | Supplies |
