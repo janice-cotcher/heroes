@@ -1,0 +1,10 @@
+
+*.pyc
+.DS_Store
+.DS_Store
+__pycache__/hero.cpython-37.pyc
+__pycache__/inventory.cpython-37.pyc
+__pycache__/hero_characteristics.cpython-37.pyc
+__pycache__/map.cpython-37.pyc
+__pycache__/vehicles.cpython-37.pyc
+*.pyc

@@ -1,0 +1,6 @@
+|----------|----------|----------|----------|----------|
+| Supplies | Supplies | Blank    | Start    | Enemy    |
+| Blank    | Enemy    | Blank    | Blank    | Supplies |
+| Supplies | Enemy    | Supplies | Blank    | Supplies |
+| Enemy    | Enemy    | Supplies | Weapons  | BigBoss  |
+| Weapons  | Supplies | Weapons  | Supplies | Supplies |

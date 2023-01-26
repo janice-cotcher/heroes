@@ -1,0 +1,32 @@
+# Map
+☐ direction headings
+☐ x-y axis functions
+☐ move to another city after defeating big Boss
+✔ radomly generated postitions @done(2020-03-09 08:50)
+
+# Enemies
+☐ choose enemies
+☐ determine power levels
+☐ determine damage
+☐ determine big Boss
+
+# Classes
+✔ weapons @done(2019-12-01 14:58)
+✔ vehicles @done(2019-11-21 13:31)
+✔ protection @done(2019-12-01 14:58)
+☐ healing
+☐ other supplies
+☐ enemies
+✔ heroes @done(2019-12-01 14:58)
+☐ cities
+☐ map tiles
+
+# Efficiency
+☐ function to check for substrings in character names
+
+# Continous Game Example
+✔ choice of weapons @done(2020-05-04 10:39)
+☐ damage inflicted
+✔ choice of defence @done(2020-05-04 10:39)
+✔ choice of direction in explore menu @done(2020-05-04 10:39)
+✔ healing items @done(2020-05-04 09:13)
