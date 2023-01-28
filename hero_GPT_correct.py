@@ -5,13 +5,13 @@ class Hero(object):
         self.power = power
         self.identity = identity
 
-    
+
     def say_hello(self):
         """greets the evil-doers and says the name and power of the hero"""
         print('Hello, evil-doers! My name is', self.name + '!')
         print('My super power is', self.power, 'so you better beware.')
 
-    
+
     def divulge(self):
         """reveals the real identity of the hero"""
         print('My real name is', self.identity)
@@ -29,5 +29,6 @@ diana = Hero('Wonder Woman', 'super strength', 'Diana Prince')
 diana.say_hello()
 # changing the identity attribute of diana object
 diana.identity = "changed!"
-# calling the divulge() method on diana object after changing the identity
+# calling the divulge() method on diana object after 
+# changing the identity
 diana.divulge()
